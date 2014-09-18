@@ -18,8 +18,6 @@ package org.kametic.specifications;
 /**
  * Specification that can compare its logic to other specifications.
  * 
- * @author Jeroen van Schagen
- * @since 22-02-2011
  *
  * @param <T> type of candidates being checked on
  */

@@ -16,10 +16,6 @@
  */
 package org.kametic.specifications;
 
-import org.apache.commons.lang.builder.EqualsBuilder;
-import org.apache.commons.lang.builder.HashCodeBuilder;
-import org.apache.commons.lang.builder.ToStringBuilder;
-import org.apache.commons.lang.builder.ToStringStyle;
 
 public abstract class AbstractSpecification<T> implements Specification<T>
 {
@@ -66,7 +62,7 @@ public abstract class AbstractSpecification<T> implements Specification<T>
     @Override
     public boolean equals(Object obj)
     {
-        return EqualsBuilder.reflectionEquals(this, obj);
+        return id.equals(obj);
     }
 
     /**
@@ -75,7 +71,7 @@ public abstract class AbstractSpecification<T> implements Specification<T>
     @Override
     public int hashCode()
     {
-        return HashCodeBuilder.reflectionHashCode(this);
+        return this.id.hashCode();
     }
 
     /**
@@ -84,17 +80,12 @@ public abstract class AbstractSpecification<T> implements Specification<T>
     @Override
     public String toString()
     {
-        return ToStringBuilder.reflectionToString(this, ToStringStyle.SHORT_PREFIX_STYLE);
+        return this.getClass().getName() + "@" + this.id.hashCode();
     }
 
     public Object getId()
     {
         return id;
-    }
-
-    public void setId(Object id)
-    {
-        this.id = id;
     }
 
 }
