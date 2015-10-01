@@ -16,16 +16,16 @@
  */
 package org.kametic.specifications.reflect;
 
+import org.apache.commons.lang.ArrayUtils;
+import org.kametic.specifications.AbstractSpecification;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
-import org.apache.commons.lang.ArrayUtils;
-import org.kametic.specifications.AbstractSpecification;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class ClassMethodsAnnotatedWith extends AbstractSpecification<Class<?>> 
 {
@@ -47,22 +47,22 @@ public class ClassMethodsAnnotatedWith extends AbstractSpecification<Class<?>>
 			try {
 				
 				Class<?>[] clazzes = getAllInterfacesAndClasses(candidate);
-				
-				for(Class<?> clazz : clazzes) 
+
+				for(Class<?> clazz : clazzes)
 				{
 					for ( Method method : clazz.getDeclaredMethods() )
 					 {
-						 if ( methodAnnotatedWith.isSatisfiedBy(method) ) 
+						 if ( methodAnnotatedWith.isSatisfiedBy(method) )
 						 {
 							 return true;
 						 }
 					 }
 				 }
-				
-			} 
-			  catch (Throwable cnfe)
+
+			}
+			  catch (Throwable classNotFoundException)
 			{
-				logger.warn("Exception on isSatisfiedBy () " + cnfe.getMessage());
+				logger.trace("Exception on isSatisfiedBy () " + classNotFoundException.getMessage());
 			}
 		}
 		
