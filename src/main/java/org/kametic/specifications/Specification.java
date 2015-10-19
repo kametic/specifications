@@ -16,11 +16,15 @@
  */
 package org.kametic.specifications;
 
-
+/**
+ * Provides methods to express complex and reusable rules on a given type.
+ *
+ * @param <T> the specified type
+ */
 public interface Specification<T> {
 
     /**
-     * See if an object satisfies all the requirements expressed in this specification.
+     * Verifies that an object satisfies all the requirements expressed in this specification.
      * 
      * @param candidate the object being verified
      * @return {@code true} if the requirements are satisfied, otherwise {@code false}

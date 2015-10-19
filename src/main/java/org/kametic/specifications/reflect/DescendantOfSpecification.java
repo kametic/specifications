@@ -17,12 +17,11 @@
 package org.kametic.specifications.reflect;
 
 import org.kametic.specifications.AbstractSpecification;
+
 /**
- * 
  * Strictly descendant of a candidate class.
  * 
  * @author ejemba
- *
  */
 public class DescendantOfSpecification extends AbstractSpecification<Class<?>>
 {

@@ -16,21 +16,21 @@
  */
 package org.kametic.specifications;
 
+/**
+ * A specification which verifies that all the given specifications are satisfied by a given object.
+ *
+ * @param <T> the object type to verify
+ */
 public class AndSpecification<T> extends CompositeSpecification<T> {
 
     /**
-     * 
-     * @param lhs
-     * @param rhs
+     * Constructs an {@link org.kametic.specifications.AndSpecification}
+     * @param specificationParticipants the verified specifications
      */
-    @SuppressWarnings("unchecked")
     public AndSpecification(Specification<? super T>... specificationParticipants) {
         super(specificationParticipants);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public boolean isSatisfiedBy(T candidate) {
         boolean result = true;

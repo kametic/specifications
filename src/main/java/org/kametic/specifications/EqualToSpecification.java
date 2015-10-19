@@ -18,20 +18,24 @@ package org.kametic.specifications;
 
 import org.apache.commons.lang.ObjectUtils;
 
+/**
+ * A specification verifying that two object are equals.
+ *
+ * @param <T> the object type to check
+ */
 public class EqualToSpecification<T> extends AbstractSpecification<T> {
+
     private final Object value;
 
     /**
      * Construct a new {@link EqualToSpecification}.
+     *
      * @param value the value that our candidates should be equal to
      */
     public EqualToSpecification(Object value) {
         this.value = value;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public boolean isSatisfiedBy(T candidate) {
         return ObjectUtils.equals(candidate, value);

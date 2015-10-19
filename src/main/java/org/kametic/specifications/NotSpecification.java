@@ -15,11 +15,14 @@
  * limitations under the License.
  */
 package org.kametic.specifications;
+
 public class NotSpecification<T> extends AbstractSpecification<T> {
+
     private final Specification<T> delegate;
 
     /**
      * Construct a new {@link NotSpecification}.
+     *
      * @param delegate the specification to negate
      */
     public NotSpecification(Specification<T> delegate) {
@@ -30,9 +33,6 @@ public class NotSpecification<T> extends AbstractSpecification<T> {
         this.delegate = delegate;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public boolean isSatisfiedBy(T candidate) {
         return !delegate.isSatisfiedBy(candidate);
