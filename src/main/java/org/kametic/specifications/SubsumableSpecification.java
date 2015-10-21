@@ -17,7 +17,6 @@
 package org.kametic.specifications;
 /**
  * Specification that can compare its logic to other specifications.
- * 
  *
  * @param <T> type of candidates being checked on
  */

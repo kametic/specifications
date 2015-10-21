@@ -15,11 +15,12 @@
  * limitations under the License.
  */
 package org.kametic.specifications;
+
+/**
+ * A specification which takes an object and always return false.
+ */
 public class FalseSpecification extends AbstractSpecification<Object> {
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public boolean isSatisfiedBy(Object candidate) {
         return false;

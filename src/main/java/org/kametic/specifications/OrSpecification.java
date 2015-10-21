@@ -15,20 +15,22 @@
  * limitations under the License.
  */
 package org.kametic.specifications;
+
+/**
+ * A specification expecting that at least one of the given specification is satisfied.
+ * @param <T>
+ */
 public class OrSpecification<T> extends CompositeSpecification<T> {
 
     /**
-     * 
-     * @param lhs
-     * @param rhs
+     * Construct a specification expecting that at least one of the given specification is satisfied.
+     *
+     * @param specificationParticipants left hand specification
      */
     public OrSpecification(Specification<? super T>... specificationParticipants) {
         super(specificationParticipants);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public boolean isSatisfiedBy(T candidate) {
         boolean result = false;

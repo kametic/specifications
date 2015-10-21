@@ -21,9 +21,9 @@ public abstract class CompositeSpecification<T> extends AbstractSpecification<T>
     protected final Specification<? super T>[] childSpecifications;
 
     /**
-     * Construct a new {@link CompositeSpecification}.
-     * @param lhs left hand side specification
-     * @param rhs right hand side specification
+     * Constructs a new {@link CompositeSpecification}.
+     *
+     * @param childSpecifications the contained specifications
      */
     public CompositeSpecification(Specification<? super T>... childSpecifications) {
         super();

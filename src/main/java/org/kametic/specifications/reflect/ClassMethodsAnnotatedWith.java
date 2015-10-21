@@ -30,7 +30,7 @@ import java.util.List;
 public class ClassMethodsAnnotatedWith extends AbstractSpecification<Class<?>> 
 {
 	
-	Logger logger = LoggerFactory.getLogger(ClassMethodsAnnotatedWith.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(ClassMethodsAnnotatedWith.class);
 	
 	private MethodAnnotatedWith methodAnnotatedWith;
 	
@@ -45,14 +45,13 @@ public class ClassMethodsAnnotatedWith extends AbstractSpecification<Class<?>>
 		if (null != candidate)
 		{
 			try {
-				
-				Class<?>[] clazzes = getAllInterfacesAndClasses(candidate);
+				Class<?>[] classes = getAllInterfacesAndClasses(candidate);
 
-				for(Class<?> clazz : clazzes)
+				for(Class<?> clazz : classes)
 				{
-					for ( Method method : clazz.getDeclaredMethods() )
+					for (Method method : clazz.getDeclaredMethods())
 					 {
-						 if ( methodAnnotatedWith.isSatisfiedBy(method) )
+						 if (methodAnnotatedWith.isSatisfiedBy(method))
 						 {
 							 return true;
 						 }
@@ -60,16 +59,15 @@ public class ClassMethodsAnnotatedWith extends AbstractSpecification<Class<?>>
 				 }
 
 			}
-			  catch (Throwable classNotFoundException)
+			catch (Throwable classNotFoundException)
 			{
-				logger.trace("Exception on isSatisfiedBy () " + classNotFoundException.getMessage());
+				LOGGER.trace("Exception on isSatisfiedBy () " + classNotFoundException.getMessage());
 			}
 		}
 		
 		return false;
 	}
-	
-	
+
     Class<?>[] getAllInterfacesAndClasses(Class<?> clazz) {
         return getAllInterfacesAndClasses(new Class[] { clazz } );
     }
@@ -93,12 +91,12 @@ public class ClassMethodsAnnotatedWith extends AbstractSpecification<Class<?>>
             		Class<?>[] interfaces = clazz.getInterfaces();
 	                if (interfaces != null)
 	                {
-	                	extendedClasses.addAll((List<? extends Class<?>>) Arrays.asList( interfaces ) );
+	                	extendedClasses.addAll(Arrays.asList(interfaces));
 	                }
 	                Class<?> superclass = clazz.getSuperclass();
 	                if (superclass != null && superclass != Object.class)
 	                {
-	                	extendedClasses.addAll((List<? extends Class<?>>) Arrays.asList( superclass ) );
+	                	extendedClasses.addAll(Arrays.asList(superclass));
 	                }
             	}
             }
@@ -108,6 +106,4 @@ public class ClassMethodsAnnotatedWith extends AbstractSpecification<Class<?>>
             return (Class[]) ArrayUtils.addAll( classes, getAllInterfacesAndClasses( extendedClasses.toArray(new Class[extendedClasses.size()])));
         }
     }
-	
-	
 }

@@ -21,38 +21,33 @@ import org.apache.commons.lang.builder.HashCodeBuilder;
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;
 
-
+/**
+ * This class provides default behavior to classes implementing {@link org.kametic.specifications.Specification}.
+ *
+ * @param <T> the object type to verify
+ */
 public abstract class AbstractSpecification<T> implements Specification<T>
 {
 
     /**
-     * do not remove this simple object insure the specification is unique
+     * Do not remove this simple object insure the specification is unique
      */
     private Object id = new Object();
     
     // Chaining
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public AndSpecification<T> and(Specification<? super T> rhs)
     {
         return new AndSpecification<T>(this, rhs);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public OrSpecification<T> or(Specification<? super T> rhs)
     {
         return new OrSpecification<T>(this, rhs);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public NotSpecification<T> not()
     {
@@ -61,27 +56,18 @@ public abstract class AbstractSpecification<T> implements Specification<T>
 
     // Object behaviour
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public boolean equals(Object obj)
     {
         return EqualsBuilder.reflectionEquals(this, obj) ;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public int hashCode()
     {
         return HashCodeBuilder.reflectionHashCode(this);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public String toString()
     {
@@ -92,7 +78,5 @@ public abstract class AbstractSpecification<T> implements Specification<T>
     {
         return id;
     }
-
-  
 
 }
